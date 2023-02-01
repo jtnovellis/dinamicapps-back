@@ -14,7 +14,7 @@ export async function signUpHandler(req: Request, res: Response) {
     })
     return res.status(201).json({
       message: 'User created',
-      data: { email: user.email, role: user.role, token },
+      data: { name: user.name, email: user.email, role: user.role, token },
     })
   } catch (e) {
     return res
@@ -39,7 +39,7 @@ export async function logInHandler(req: Request, res: Response) {
     })
     return res.status(200).json({
       message: 'User Logged',
-      data: { email: user.email, role: user.role, token },
+      data: { name: user.name, email: user.email, role: user.role, token },
     })
   } catch (e) {
     return res
