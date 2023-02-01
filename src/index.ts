@@ -1,15 +1,10 @@
-import express from 'express'
+import app from './app'
+import env from './utils/validateEnv'
+import { connectDB } from './database'
 
-const app = express()
+const PORT = env.PORT || 8080
 
-const PORT = process.env.PORT || 8080
-
-app.use(express.json())
-
-app.get('/', (_, res) => {
-  res.send('Hello world!')
-})
-
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
+  await connectDB()
   console.log(`The server is running on port http://localhost:${PORT}`)
 })
