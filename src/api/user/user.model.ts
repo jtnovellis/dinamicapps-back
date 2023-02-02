@@ -17,10 +17,15 @@ const userSchema = new Schema(
     },
     role: {
       type: String,
+      required: true,
+      default: 'user',
       enum: {
-        values: ['client', 'admin'],
+        values: ['user', 'admin'],
         message: '{VALUE} is not supported',
       },
+    },
+    appointments: {
+      type: [{ type: Schema.Types.ObjectId, ref: 'Appointment' }],
     },
   },
   {
